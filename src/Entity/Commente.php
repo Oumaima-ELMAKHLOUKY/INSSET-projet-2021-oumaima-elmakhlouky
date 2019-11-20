@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     @ORM\UniqueConstraint(name="idCom", columns={"user_id", "article_id"})
  * })
  * */
-class commente
+class Commente
 {
     /**
      * @ORM\Id
