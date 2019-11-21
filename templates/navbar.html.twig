@@ -8,6 +8,9 @@
         </li>
         {% if is_granted("IS_AUTHENTICATED_FULLY") %}
             <li class="nav-item">
+                <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Deconnexion</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link">User: {{ app.user.username }}</a>
             </li>
         {% else %}
