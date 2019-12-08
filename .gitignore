@@ -17,3 +17,11 @@
 ###> symfony/web-server-bundle ###
 /.web-server-pid
 ###< symfony/web-server-bundle ###
+
+###> .idea folder for phpstorm ###
+.idea
+###< .idea folder for phpstorm ###
+
+###> Image files of the project ###
+/public/articleImages/
+###< Image files of the project ###

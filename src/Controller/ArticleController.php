@@ -3,11 +3,12 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Article;
 use App\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ArticleController extends AbstractController
 {
@@ -29,6 +30,22 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $imgName = $form["imageADDR"]->getData();
+            if (!empty($imgName) && $imgName != "") {
+                $imgName = explode("/", $imgName)[4];
+                if (in_array($imgName, $this->getImages(), true)) {
+                    $article->setImageADDR($imgName); //Getting only the image filename instead of every file
+                } else {
+                    $response = new Response(
+                        'L\'image spécifié n\'a pas été trouvée !',
+                        Response::HTTP_OK,
+                        ['content-type' => 'text/html']
+                    );
+                    $response->headers->set('Refresh', '5; url=/article/new'); //Redirect after 5 sec
+                    return $response;
+                }
+            }
+
             $task = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -36,9 +53,44 @@ class ArticleController extends AbstractController
             $entityManager->flush();
 
             return $this->redirectToRoute('article');
+
         }
         return $this->render('article/new.html.twig', [
             'form' => $form->createView(),
+            'images' => $this->getImages(),
         ]);
+    }
+
+    public function add_image_page(Request $request)
+    {
+        return $this->render('article/add_image.html.twig');
+    }
+
+    public function add_image_action(Request $request)
+    {
+        $output = array('uploaded' => false);
+        $file = $request->files->get('file');
+        $fileName = $file->getClientOriginalName();
+
+        // set your uploads directory
+        $uploadDir = '../public/articleImages/';
+        if (!file_exists($uploadDir) && !is_dir($uploadDir)) {
+            mkdir($uploadDir, 0775, true);
+        }
+        if ($file->move($uploadDir, $fileName)) {
+            $output['uploaded'] = true;
+            $output['fileName'] = $fileName;
+        }
+        return new JsonResponse($output);
+    }
+
+
+    /**
+     * @return array
+     */
+    public function getImages(): array
+    {
+        $directory = "../public/articleImages/";
+        return preg_grep('~\.(jpeg|jpg|png)$~', scandir($directory));
     }
 }

@@ -30,6 +30,11 @@ class ArticleType extends AbstractType
                     'rows' => '10'
                 ]
             ])
+            ->add('imageADDR',TextType::class,[
+                'attr' => [
+                    'placeholder' => 'Glisser l\'image ici'
+                ]
+            ])
             ->add('publier')
             ->add('Save', SubmitType::class, [
                 'attr' => ['class' => 'save btn btn-secondary'],

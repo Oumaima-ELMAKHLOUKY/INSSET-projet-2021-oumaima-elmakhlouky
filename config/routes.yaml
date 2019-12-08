@@ -9,3 +9,11 @@ article:
 newArticle:
     path: /article/new
     controller: App\Controller\ArticleController::new
+
+addImageArticle:
+    path: /article/add_image
+    controller: App\Controller\ArticleController:add_image_page
+
+addImageAction:
+    path: /article/add_image_action
+    controller: App\Controller\ArticleController:add_image_action
