@@ -3,9 +3,11 @@
         <li class="nav-item active">
             <a class="nav-link" href="{{ path('index') }}">Index</a>
         </li>
+        {% if is_granted("ROLE_BLOGGER") %}
         <li class="nav-item">
             <a class="nav-link" href="{{ path('article') }}">Articles</a>
         </li>
+        {% endif %}
         {% if is_granted("IS_AUTHENTICATED_FULLY") %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Deconnexion</a>
@@ -21,6 +23,5 @@
                 <a class="nav-link" href="{{ path('fos_user_registration_register') }}">Inscription</a>
             </li>
         {% endif %}
-
     </ul>
 </nav>
