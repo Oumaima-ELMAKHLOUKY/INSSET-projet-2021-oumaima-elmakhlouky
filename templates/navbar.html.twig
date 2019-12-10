@@ -3,6 +3,7 @@
         <li class="nav-item active">
             <a class="nav-link" href="{{ path('index') }}">Index</a>
         </li>
+        {% if is_granted("ROLE_BLOGGER") %}
         <li class="nav-item">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Articles</a>
             <div class="dropdown-menu">
@@ -13,6 +14,7 @@
                 <a class="dropdown-item" href="#">Something else here</a>
             </div>
         </li>
+        {% endif %}
         {% if is_granted("IS_AUTHENTICATED_FULLY") %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Deconnexion</a>
