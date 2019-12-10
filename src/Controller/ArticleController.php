@@ -4,8 +4,14 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\User;
 use App\Form\ArticleType;
+use App\Form\publishType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\DataMapper\CheckboxListMapper;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -82,6 +88,36 @@ class ArticleController extends AbstractController
             $output['fileName'] = $fileName;
         }
         return new JsonResponse($output);
+    }
+
+    public function showMyArticles(Request $request){
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        $form = $this->createFormBuilder($user)
+            ->add('articles', CollectionType::class,[
+                'entry_type' => publishType::class,
+                'entry_options' => ['label' => false],
+            ])
+
+            ->add('save', SubmitType::class,[
+                'attr' => ['class' => 'save btn btn-secondary'],
+            ])
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $task = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($task);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('article');
+        }
+
+        return $this->render('article/showmy.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
 

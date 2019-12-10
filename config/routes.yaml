@@ -17,3 +17,7 @@ addImageArticle:
 addImageAction:
     path: /article/add_image_action
     controller: App\Controller\ArticleController:add_image_action
+
+myArticles:
+    path: /article/mes_articles
+    controller: App\Controller\ArticleController:showMyArticles
