@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f98ca57f-ee13-4d15-ae67-578a88203633" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+>>>>>>> 3.4_bloggeur_publie_article
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,13 +24,32 @@
       <executable />
     </execution>
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Dev" />
+        <entry key="$PROJECT_DIR$" value="3.6_dropImage" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="Dev" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="INSSET" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="l3-2019-VC-Semih" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -142,7 +169,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/articleImages" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -152,7 +179,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\semih\PhpstormProjects\l3-2019-VC-Semih\public" />
+      <recent name="C:\Users\semih\PhpstormProjects\l3-2019-VC-Semih\articleImages" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\semih\PhpstormProjects\l3-2019-VC-Semih\articleImages" />
       <recent name="C:\Users\semih\PhpstormProjects\l3-2019-VC-Semih" />
     </key>
   </component>
@@ -182,6 +214,16 @@
       <workItem from="1573812804078" duration="697000" />
       <workItem from="1574343525332" duration="834000" />
       <workItem from="1574346185683" duration="1251000" />
+      <workItem from="1574605979159" duration="3662000" />
+      <workItem from="1574864117896" duration="31000" />
+      <workItem from="1574864184260" duration="2227000" />
+      <workItem from="1575489907777" duration="1930000" />
+      <workItem from="1575603345841" duration="17000" />
+      <workItem from="1575678440558" duration="14759000" />
+      <workItem from="1575816527165" duration="10975000" />
+      <workItem from="1575861666344" duration="24000" />
+      <workItem from="1575909305938" duration="612000" />
+      <workItem from="1575911757015" duration="663000" />
     </task>
     <servers />
   </component>
