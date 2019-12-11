@@ -92,7 +92,6 @@ class ArticleController extends AbstractController
 
     public function showMyArticles(Request $request){
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
-
         $form = $this->createFormBuilder($user)
             ->add('articles', CollectionType::class,[
                 'entry_type' => publishType::class,
@@ -114,7 +113,6 @@ class ArticleController extends AbstractController
 
             return $this->redirectToRoute('article');
         }
-
         return $this->render('article/showmy.html.twig', [
             'form' => $form->createView(),
         ]);

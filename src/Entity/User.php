@@ -21,12 +21,12 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="User")
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="user")
      */
     protected $articles;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Commente", mappedBy="User")
+     * @ORM\OneToMany(targetEntity="App\Entity\Commente", mappedBy="user")
      */
     protected $commentaires;
 
