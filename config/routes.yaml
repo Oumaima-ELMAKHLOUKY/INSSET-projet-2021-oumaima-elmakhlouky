@@ -21,3 +21,8 @@ addImageAction:
 myArticles:
     path: /article/mes_articles
     controller: App\Controller\ArticleController:showMyArticles
+
+monCompte:
+    path: /mon_compte
+    controller: App\Controller\CompteController:index
+
