@@ -26,3 +26,8 @@ monCompte:
     path: /mon_compte
     controller: App\Controller\CompteController:index
 
+showArticle:
+    path: /montrerArticle/{id}
+    controller: App\Controller\CompteController:showArticle
+    methods: GET|POST
+
