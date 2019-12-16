@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Commente;
 use App\Entity\User;
 use App\Form\ArticleType;
 use App\Form\publishType;
@@ -18,10 +19,52 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ArticleController extends AbstractController
 {
-    public function index()
-    {
+    public function index(){
+        $articles = $this->getDoctrine()
+            ->getRepository(Article::class)
+            ->findAll();
+
+        if (!empty($articles)) {
+            $commentaires = [];
+            foreach ($articles as $article) {
+                array_push($commentaires, $this->getDoctrine()
+                    ->getRepository(Commente::class)
+                    ->findBy(['article' => $article], ['date' => 'desc']));
+            }
+        } else {
+            $articles = null;
+        }
+        if (empty($commentaires)) {
+            $commentaires = null;
+        }
         return $this->render('article/index.html.twig', [
-            'controller_name' => 'ArticleController',
+            'articles' => $articles,
+            'commentaires' => $commentaires,
+        ]);
+    }
+    public function monCompte()
+    {
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $articles = $this->getDoctrine()
+            ->getRepository(Article::class)
+            ->findBy(['user' => $user], ['date_publication' => 'desc']);
+
+        if (!empty($articles)) {
+            $commentaires = [];
+            foreach ($articles as $article) {
+                array_push($commentaires, $this->getDoctrine()
+                    ->getRepository(Commente::class)
+                    ->findBy(['article' => $article], ['date' => 'desc']));
+            }
+        } else {
+            $articles = null;
+        }
+        if (empty($commentaires)) {
+            $commentaires = null;
+        }
+        return $this->render('article/mon_compte.html.twig', [
+            'articles' => $articles,
+            'commentaires' => $commentaires,
         ]);
     }
 
@@ -117,7 +160,6 @@ class ArticleController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
 
     /**
      * @return array
