@@ -22,7 +22,7 @@ class ArticleController extends AbstractController
     public function index(){
         $articles = $this->getDoctrine()
             ->getRepository(Article::class)
-            ->findAll();
+            ->findBy(['publier' => '1'], ['date_publication' => 'desc']);
 
         if (!empty($articles)) {
             $commentaires = [];
